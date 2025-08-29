@@ -112,4 +112,30 @@ Route::get('language/{lang}', [LanguageController::class, 'changeLanguage'])->na
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
+// Test route
+Route::get('/test', function () {
+    return 'API hoạt động!';
+});
+
+// API docs JSON route
+Route::get('/api-docs.json', function () {
+    $path = storage_path('api-docs/api-docs.json');
+    if (file_exists($path)) {
+        return response()->file($path, [
+            'Content-Type' => 'application/json'
+        ]);
+    }
+    return response()->json(['error' => 'API docs not found'], 404);
+});
+
+// Custom Swagger UI route
+Route::get('/swagger', function () {
+    return view('swagger-ui');
+});
+
+// Swagger docs route
+Route::get('/docs', function () {
+    return redirect('/api/documentation');
+})->name('l5-swagger.default.docs');
+
 require __DIR__.'/auth.php';
