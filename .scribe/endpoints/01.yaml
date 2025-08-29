@@ -97,21 +97,22 @@ endpoints:
         description: ''
         custom: []
       -
-        status: 422
-        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
+        status: 419
         content: |-
           {
-              "message": "Server Error"
+              "message": "CSRF token mismatch."
           }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IjhlaHNKR0hZRi9MQUNpc0dtSVJyR3c9PSIsInZhbHVlIjoiR3VjTjZ6S0ZMWFJPQmRzQnFJTWtmZFBXNnBCZ0FoWDFOaHBvWUFpM3hsdFpCZkZxdVBxN0xQNXYxZjhSZzh3SnNIWW5HcDBTS2U0NVFDcGRNNE1ndXFYR2VtbnZ5d0VRUjAwRkhWREdIU1RXZXBia09MSDlFWHNQcS9uZDQweDUiLCJtYWMiOiI5NmM0NjYxNzVmNDIzZDFkOTgwMmU1YjNkMmI4ODA2MjIyMThlYzM4NDI1MWI5NTFhOWZiNTMyZjJmMzZkMDc1IiwidGFnIjoiIn0%3D; expires=Fri, 29 Aug 2025 07:39:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -145,7 +146,7 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 16
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -162,7 +163,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 16
+      category_id: 17
       category: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -199,21 +200,22 @@ endpoints:
         description: ''
         custom: []
       -
-        status: 422
-        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
+        status: 419
         content: |-
           {
-              "message": "Server Error"
+              "message": "CSRF token mismatch."
           }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IlhidndHWld2ZDZJNmZMWVVqRzMwMXc9PSIsInZhbHVlIjoiOHYzb2s4bnVkRXo2Q2dQUXVmZ3FFc1FyZlB1aE92T0d2M0dOYmhQejl3NXhGR21vRWI0L1N1cXlHR092TU5vRVdtcnFxekZrdDdCYllmYldpRWZQQi96NUlWNVZSRUFGT2NTYlB5blZvMWMrYVMzN2s0RUNrTXFvbmx3dy9SRE0iLCJtYWMiOiIwMWUzYzE3OTJmMDVlYzUyOGMxM2QwMWQ5MTJmYmM2M2MwYmNmZDg4NTk1OGI2M2QzNjMxNjBmNzc3ZTdlNDA2IiwidGFnIjoiIn0%3D; expires=Fri, 29 Aug 2025 07:39:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -247,7 +249,7 @@ endpoints:
         name: category_category_id
         description: 'The ID of the category category.'
         required: true
-        example: 16
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -264,7 +266,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_category_id: 16
+      category_category_id: 17
       category: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -285,14 +287,15 @@ endpoints:
         description: ''
         custom: []
       -
-        status: 500
+        status: 419
         content: |-
           {
-              "message": "Server Error"
+              "message": "CSRF token mismatch."
           }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6ImJFc29VZVkrWm5VakxiZVUyS2NoT2c9PSIsInZhbHVlIjoiVHR3dUY2b2dPalVPTEx2Y2ltMjNOR1N4azVXMWtIQkV1T2tJdmhQQlVtZVgwZGFiSVIzZ3NGNzUxVHVRdjUzV09TTHVjVi95MjQ2dk1zSFdTN28xdjFFL25nWFUzOXpDM1pvTHJuTFU3M1VpZlNtVkg5NlU3MFplOTdLd3hLOEwiLCJtYWMiOiI0MTAyZDYwZGIyMTEyNWM4MmI4M2YxODQxY2IxNGRlZTIyZWI0NmVkNmY0ZWFlMzYwZGY2YTNhNjQ3OGFkMjY3IiwidGFnIjoiIn0%3D; expires=Fri, 29 Aug 2025 07:39:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
