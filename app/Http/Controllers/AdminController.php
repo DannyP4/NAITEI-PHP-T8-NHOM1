@@ -315,6 +315,12 @@ class AdminController extends Controller
         return response()->json(['success' => true]);
     }
 
+    /**
+     * @group Admin Products
+     * @authenticated
+     * Trang quản lý sản phẩm.
+     * @response view admin.pages.products
+     */
     public function products()
     {
         $products = Product::with('category')->orderBy('updated_at', 'desc')->paginate(10); // paginate products (10 per page)
@@ -322,6 +328,18 @@ class AdminController extends Controller
         return view('admin.pages.products', compact('products', 'categories'));
     }
 
+    /**
+     * @group Admin Products
+     * @authenticated
+     * Tạo mới sản phẩm.
+     * @bodyParam name string required Tên sản phẩm. Example: Ghế sofa cao cấp
+     * @bodyParam description string Mô tả sản phẩm. Example: Ghế sofa chất liệu cao cấp, thiết kế hiện đại
+     * @bodyParam price number required Giá sản phẩm. Example: 2500000
+     * @bodyParam category_id integer required ID danh mục. Example: 1
+     * @bodyParam image file Ảnh sản phẩm.
+     * @response 302 {"success": true}
+     * @response 422 {"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}
+     */
     public function storeProduct(StoreProductRequest $request)
     {
         $validated = $request->validated();
@@ -343,6 +361,19 @@ class AdminController extends Controller
         return redirect()->route('admin.products')->with('success', 'Product added successfully.');
     }
 
+    /**
+     * @group Admin Products
+     * @authenticated
+     * Cập nhật sản phẩm.
+     * @urlParam productId integer required The ID of the product to update. Example: 1
+     * @bodyParam name string Tên sản phẩm. Example: Ghế sofa cao cấp updated
+     * @bodyParam description string Mô tả sản phẩm. Example: Ghế sofa chất liệu cao cấp, thiết kế hiện đại
+     * @bodyParam price number Giá sản phẩm. Example: 2700000
+     * @bodyParam category_id integer ID danh mục. Example: 1
+     * @bodyParam image file Ảnh sản phẩm.
+     * @response 302 {"success": true}
+     * @response 422 {"message": "The given data was invalid.", "errors": {"price": ["The price must be a number."]}}
+     */
     public function updateProduct(UpdateProductRequest $request, $productId)
     {
         $product = Product::where('product_id', $productId)->firstOrFail();
@@ -365,6 +396,14 @@ class AdminController extends Controller
         return redirect()->route('admin.products')->with('success', 'Product updated successfully.');
     }
 
+    /**
+     * @group Admin Products
+     * @authenticated
+     * Xóa sản phẩm.
+     * @urlParam productId integer required The ID of the product to delete. Example: 1
+     * @response 200 {"success": true}
+     * @response 404 {"message": "Product not found."}
+     */
     public function deleteProduct($productId)
     { 
         $product = Product::where('product_id', $productId)->firstOrFail();
@@ -380,6 +419,14 @@ class AdminController extends Controller
         return response()->json(['success' => true]);
     }
 
+    /**
+     * @group Admin Products
+     * @authenticated
+     * Tìm kiếm sản phẩm.
+     * @queryParam query string Từ khóa tìm kiếm theo tên sản phẩm. Example: sofa
+     * @queryParam category_id integer ID danh mục để lọc sản phẩm. Example: 1
+     * @response view admin.pages.products
+     */
     public function searchProducts(Request $request)
     {
         $query = $request->input('query');
